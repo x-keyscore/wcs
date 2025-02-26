@@ -110,7 +110,7 @@ main {
     font-weight: 700;
     text-decoration: none;
     border-radius: 10px;
-    box-shadow: inset 0 0 0 0 var(--shadow);
+    box-shadow: inset 0 0 0 0 var(--active);
     transition: box-shadow .4s ease-in-out;
 }
 
