@@ -43,7 +43,7 @@ main {
     gap: 12px;
     padding: 10px;
     /*max-width: min(80%, 400px);*/
-    max-width: 400px;
+    max-width: 450px;
     min-height: 350px;
     max-height: 90vh;
     background-color: var(--secondary);
@@ -103,7 +103,6 @@ main {
 .card-content-quote {
     align-self: center;
     width: min(100%, 350px);
-    margin: auto 0;
     font-family: "Josefin Sans", sans-serif;
     text-align: center;
     font-size: 0.95rem;
@@ -130,6 +129,5 @@ main {
 }
 
 .card-link:focus-visible {
-    transition: none;
     box-shadow: inset 400px 0 0 0 var(--active);
 }
