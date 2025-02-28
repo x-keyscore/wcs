@@ -4,6 +4,7 @@
     --primary: #A306B6;
     --secondary: #D9D9D9;
     --secondary-light: #fff;
+    --access: #ecb52a;
 }
 
 h1, h2, h3, p, blockquote {
@@ -17,7 +18,7 @@ a {
 }
 
 body, html {
-    background-color: var(--primary);
+    background-color: var(--secondary);
     font-family: "Source Sans 3", serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -26,6 +27,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow: hidden;
 }
 
 .navbar {
@@ -78,8 +80,12 @@ body, html {
 }
 
 .container {
-    background-color: var(--secondary-light);
+    overflow-x: hidden;
     overflow-y: auto;
+    scrollbar-width: none;
+    background-color: var(--secondary-light);
+    /* Elastic scroll background effect */
+    background: linear-gradient(180deg, rgba(163,6,182,1) 50%, rgba(217,217,217,1) 50%);
 }
 
 .container-header {
@@ -93,9 +99,10 @@ body, html {
 }
 
 .container-header > .picture {
+    width: 150px;
+    background-color: var(--secondary-light);
     border: var(--secondary-light) 3px solid;
     border-radius: 50%;
-    width: 150px;
 }
 
 .container-header > .title {
@@ -104,12 +111,17 @@ body, html {
     color: var(--secondary-light);
 }
 
+.container-body {
+    background: var(--secondary-light);
+    padding-bottom:  80px;
+}
+
 .container-body-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    margin-top: 50px;
+    gap: 20px;
+    padding-top: 60px;
 }
 
 .container-body-section > .title {
@@ -129,29 +141,53 @@ body, html {
 .container-body-section > .grid > .cell {
     box-sizing: border-box;
     background-color: var(--secondary);
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 5px 0;
     aspect-ratio: 1 / 1;
 }
 
 .container-body-section > .grid > .cell > .picture {
-    width: 100%;
+    max-height: 50%;
 }
 
 .container-body-section > .grid > .cell > .title {
-    
+    font-size: 1.15rem;
 }
 
 .container-body-section > .grid > .cell > .link {
-    padding: 8px 10px;
     background-color: var(--primary);
     color: var(--secondary-light);
-    min-width: 60px;
+    font-size: 0.95rem;
+    text-align: center;
+    position: relative;
+    min-width: 45%;
+    padding: 2% 0;
     border-radius: 40px;
+}
+
+/* Reason for the after: firefox anti-aliasing bug with border-radius */
+.container-body-section > .grid > .cell > .link::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    box-shadow: 0 0 0 2px var(--primary);
+    border-radius: 40px;
+    transition: box-shadow .2s ease-in-out;
+}
+
+.container-body-section > .grid > .cell > .link:hover::after {
+    box-shadow: 0 0 0 0px var(--primary);
+}
+
+.container-body-section > .grid > .cell > .link:focus-visible::after {
+    box-shadow: 0 0 0 2px var(--access);
 }
 
 .container-body-section > .paragraph {
@@ -159,7 +195,6 @@ body, html {
 }
 
 .container-footer {
-    margin-top: 64px;
     background-color: var(--secondary);
     display: flex;
     flex-direction: column;
