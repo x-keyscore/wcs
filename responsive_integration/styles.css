@@ -4,7 +4,7 @@
     --primary: #A306B6;
     --secondary: #D9D9D9;
     --secondary-light: #fff;
-    --access: #ecb52a;
+    --access: #000000;
 }
 
 h1, h2, h3, p, blockquote {
@@ -169,7 +169,7 @@ body, html {
     border-radius: 40px;
 }
 
-/* Reason for the after: firefox anti-aliasing bug with border-radius */
+/* Reason for the "after": firefox anti-aliasing bug with border-radius */
 .container-body-section > .grid > .cell > .link::after {
     content: "";
     position: absolute;
@@ -179,11 +179,11 @@ body, html {
     height: calc(100% - 2px);
     box-shadow: 0 0 0 2px var(--primary);
     border-radius: 40px;
-    transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .25s ease-in-out;
 }
 
 .container-body-section > .grid > .cell > .link:hover::after {
-    box-shadow: 0 0 0 0px var(--primary);
+    box-shadow: 0 0 0 0 var(--primary);
 }
 
 .container-body-section > .grid > .cell > .link:focus-visible::after {
@@ -205,6 +205,12 @@ body, html {
 
 .container-footer a {
     color: var(--primary);
+    padding: 0 2px;
+}
+
+.container-footer a:focus-visible {
+    border-radius: 5px;
+    border: var(--access) 2px solid;
 }
 
 @media (max-width: 480px) {
