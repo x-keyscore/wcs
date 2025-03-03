@@ -47,7 +47,7 @@ main {
     min-height: 350px;
     max-height: 90vh;
     background-color: var(--secondary);
-    box-shadow: 8px 8px 0px 0px var(--shadow);
+    box-shadow: 8px 8px 0 0 var(--shadow);
     border: var(--shadow) 2px solid;
     border-radius: 20px;
 }
