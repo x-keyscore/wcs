@@ -4,7 +4,9 @@
     --primary: #A306B6;
     --secondary: #D9D9D9;
     --secondary-light: #fff;
-    --access: #000000;
+    --text-light: #fff;
+    --text-dark: #2b2b2b;
+    --access: #2b2b2b;
 }
 
 h1, h2, h3, p, blockquote {
@@ -22,12 +24,19 @@ li {
     margin: 0;
 }
 
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
 a {
     text-decoration: none;
     outline: none;
 }
 
-body, html {
+html, body {
     background-color: var(--secondary);
     font-family: "Source Sans 3", serif;
     font-optical-sizing: auto;
@@ -54,24 +63,34 @@ body, html {
 }
 
 .navbar-icon {
-    width: 50px;
+    height: 35px;
 }
 
 .navbar-menu {
     padding: 0 2%;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-menu > .btn {
+    display: none;
+}
+
+.navbar-menu > .btn > img {
+    width: 35px;
 }
 
 .navbar-menu > .list {
     display: flex;
-    flex-wrap: wrap;
     gap: 0 50px;
 }
 
 .navbar-menu > .list .link {
     cursor: pointer;
-    color: var(--secondary-light);
+    color: var(--text-light);
     font-size: 1.1rem;
     font-weight: 600;
+    width: max-content;
 }
 
 .navbar-menu > .list .link::after {
@@ -84,10 +103,7 @@ body, html {
     transition: width .15s ease-in-out;
 }
 
-.navbar-menu > .list .link:hover::after {
-    width: 100%;
-}
-
+.navbar-menu > .list .link:hover::after,
 .navbar-menu > .list .link:focus-visible::after {
     width: 100%;
 }
@@ -121,12 +137,12 @@ body, html {
 .container-header > .title {
     font-family: "Montserrat", sans-serif;
     font-size: 1.8rem;
-    color: var(--secondary-light);
+    color: var(--text-light);
 }
 
 .container-body {
     background: var(--secondary-light);
-    padding-bottom:  80px;
+    padding-bottom: 80px;
 }
 
 .container-body-section {
@@ -168,38 +184,29 @@ body, html {
 }
 
 .container-body-section > .grid > .cell > .title {
+    color: var(--text-dark);
     font-size: 1.15rem;
 }
 
 .container-body-section > .grid > .cell > .link {
     background-color: var(--primary);
-    color: var(--secondary-light);
+    color: var(--text-light);
     font-size: 0.95rem;
+    font-weight: 600;
     text-align: center;
     position: relative;
     min-width: 45%;
     padding: 2% 0;
     border-radius: 40px;
+    transition: padding .15s ease-in-out;
 }
 
-/* Reason for the "after": firefox anti-aliasing bug with border-radius */
-.container-body-section > .grid > .cell > .link::after {
-    content: "";
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    box-shadow: 0 0 0 2px var(--primary);
-    border-radius: 40px;
-    transition: box-shadow .25s ease-in-out;
+.container-body-section > .grid > .cell > .link:hover,
+.container-body-section > .grid > .cell > .link:focus-visible {
+    padding: 2% 6px;
 }
 
-.container-body-section > .grid > .cell > .link:hover::after {
-    box-shadow: 0 0 0 0 var(--primary);
-}
-
-.container-body-section > .grid > .cell > .link:focus-visible::after {
+.container-body-section > .grid > .cell > .link:focus-visible {
     box-shadow: 0 0 0 2px var(--access);
 }
 
@@ -209,6 +216,7 @@ body, html {
 
 .container-footer {
     background-color: var(--secondary);
+    color: var(--text-dark);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,17 +226,37 @@ body, html {
 
 .container-footer a {
     color: var(--primary);
-    padding: 0 2px;
+    padding: 0 1px;
 }
 
 .container-footer a:focus-visible {
     border-radius: 5px;
-    border: var(--access) 2px solid;
+    box-shadow: 0 0 0 2px var(--access);
 }
 
 @media (max-width: 480px) {
+    body {
+       flex-direction: row-reverse;
+       overflow-x: auto;
+       scroll-snap-type: x mandatory;
+       scroll-behavior: smooth;
+       justify-content: flex-start; 
+    }
+    body div {
+        scroll-snap-align: center;
+    }
     .navbar {
+        position: relative;
+        flex-shrink: 0;
+        width: 50vw;
         flex-direction: column;
+    }
+    .navbar > .navbar-menu {
+        flex-direction: column;
+    }
+    .container {
+        flex-shrink: 0;
+        width: 100vw;
     }
     .container-header {
         flex-direction: column;
