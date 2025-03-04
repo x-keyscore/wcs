@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root {
+    --primary: #000814;
+    --secondary: #fff;
+}
+
+html, body {
+    background-color: var(--primary);
+    font-family: "Source Sans 3", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}

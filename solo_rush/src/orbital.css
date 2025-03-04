@@ -1,0 +1,71 @@
+.orbital {
+    user-select: none;
+    pointer-events: none;
+    overflow: auto;
+}
+
+.orbital > .layers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 100vw;
+    height: 100vw;
+    transform: rotateX(75deg);
+    transform-style: preserve-3d;
+}
+
+@media (max-width: 767px) {
+    .orbital > .layers:has(> .zoom:focus) {
+        width: 400vw;
+        height: 400vw;
+    }
+}
+
+.orbital > .layers > .layer {
+    --max-distance-radius: 30.05;
+    --max-size-diameter: 139820;
+    --distance: calc((var(--distance-radius) / var(--max-distance-radius)) * 80%);
+    --diameter: calc((var(--size-diameter) / var(--max-size-diameter)) * 80%);
+    position: absolute;
+    width: var(--distance);
+    height: var(--distance);
+    border: var(--secondary) 1px solid;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+}
+
+.orbital > .layers > .layer > .picture {
+    transform: rotateX(-75deg);
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+.orbital > .layers > .layer > .picture > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--diameter);
+    height: var(--diameter);
+}
+
+/*
+--distance-radius: UA
+--size-diameter: km
+*/
+.orbital .mercury { --distance-radius: 0.39; --size-diameter: 4880 }
+.orbital .venus   { --distance-radius: 0.72; --size-diameter: 12104 }
+.orbital .earth   { --distance-radius: 1.00; --size-diameter: 12742 }
+.orbital .mars    { --distance-radius: 1.52; --size-diameter: 6779 }
+.orbital .jupiter { --distance-radius: 5.20; --size-diameter: 139820 }
+.orbital .saturn  { --distance-radius: 9.58; --size-diameter: 116460 }
+.orbital .uranus  { --distance-radius: 19.22; --size-diameter: 50724 }
+.orbital .neptune { --distance-radius: 30.05; --size-diameter: 49244 }
+
+.orbital .focus {
+    width: 100%;
+    height: 100%;
+    pointer-events: all;
+    outline: none;
+}
