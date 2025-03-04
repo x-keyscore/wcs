@@ -227,34 +227,8 @@ html, body {
 }
 
 @media (max-width: 480px) {
-    body {
-       flex-direction: row-reverse;
-       overflow-x: auto;
-       scroll-snap-type: x mandatory;
-       scroll-behavior: smooth;
-       overscroll-behavior: none;
-    }
-    body div {
-        scroll-snap-align: center;
-    }
     .navbar {
-        position: relative;
-        width: 50vw;
-        flex-shrink: 0;
         flex-direction: column;
-        justify-content: start;
-    }
-    .navbar > .navbar-menu {
-        flex-direction: column;
-    }
-    .navbar > .navbar-menu > .list {
-        align-self: flex-start;
-        flex-direction: column;
-        gap: 12px;
-    }
-    .container {
-        flex-shrink: 0;
-        width: 100vw;
     }
     .container-header {
         flex-direction: column;
