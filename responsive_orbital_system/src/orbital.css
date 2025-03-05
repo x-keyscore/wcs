@@ -1,0 +1,85 @@
+.orbital {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateX(75deg);
+    transform-style: preserve-3d;
+}
+
+.orbital.root {
+    --orbit-color: #ffffff67;
+    width: 100%;
+    height: 60vh;
+    user-select: none;
+    pointer-events: none;
+}
+
+.orbital.bind {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+.orbital > .object {
+    --orbit-diameter: calc(var(--orbit-size) * 1%);
+    --orbit-radius: calc(var(--orbit-diameter) / 2);
+    --object-diameter: calc(var(--object-size) * 0.1%);
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    will-change: transform;
+    transform-style: preserve-3d;
+    animation: rotate-object 8000ms linear infinite;
+}
+
+.orbital > .object::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - var(--orbit-radius));
+    left: calc(50% - var(--orbit-radius));
+    width: var(--orbit-diameter);
+    aspect-ratio: 1 / 1;
+    border: var(--orbit-color) 1px solid;
+    border-radius: 50%;
+}
+
+.orbital > .object > .object-content {
+    position: absolute;
+    top: 0;
+    left: var(--orbit-radius);
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+    transform-style: preserve-3d;
+    transform: rotateZ(calc(var(--orbit-degree) + 360deg)) rotateX(-90deg);
+    animation: rotate-object-content 8000ms linear infinite;
+}
+
+.orbital > .object > .object-content > .object-content-picture {
+    position: absolute;
+    top: calc((50% - var(--object-diameter) / 2));
+    left: calc((50% - var(--object-diameter) / 2));
+    width: var(--object-diameter);
+    height: var(--object-diameter);
+    border-radius: 50%;
+}
+
+@keyframes rotate-object {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes rotate-object-content {
+    from {
+        transform: rotateZ(360deg) rotateX(-90deg);
+    }
+    to {
+        transform: rotateZ(0deg) rotateX(-90deg);
+    }
+}
+

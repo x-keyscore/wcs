@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=5">
+        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="./orbital.css">
+
+        <title>Planets</title>
+        <meta name="description" content="The best school">
+        <meta name="keyword" content="fun, joy">
+    </head>
+    <body>
+        <div class="fake-nav"></div>
+        <div class="container">
+            <div class="orbital root">
+                <div class="object" style="--orbit-size: 20; --orbit-degree: 0deg; --object-size: 50; --object-speed: 10; display: none;">
+                    <div class="object-content">
+                        <img class="object-content-picture" src="../assets/pictures/jupiter.png">
+                    </div>
+                </div>
+                <div class="object" style="--orbit-size: 50; --orbit-degree: 120deg; --object-size: 100; --object-speed: 10; ">
+                    <div class="object-content">
+                        <img class="object-content-picture" src="../assets/pictures/jupiter.png">
+                    </div>
+                </div>
+                <div class="object" style="--orbit-size: 80; --orbit-degree: 0deg; --object-size: 20; --object-speed: 10; display: none;">
+                    <div class="object-content">
+                        <img class="object-content-picture" src="../assets/pictures/jupiter.png">
+                        <div class="orbital bind">
+                            <div class="object" style="--orbit-size: 8; --orbit-degree: 0deg; --object-size: 10; --object-speed: 10;">
+                                <div class="object-content">
+                                    <img class="object-content-picture" src="../assets/pictures/jupiter.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fake-content"></div>
+            <div class="fake-content2"></div>
+        </div>
+    </body>
+</html>
