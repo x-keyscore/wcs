@@ -4,7 +4,7 @@
     overflow: hidden;
 }
 
-.orbital > .layers {
+.orbital > .disks {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,16 +13,17 @@
     height: 100vw;
     transform: rotateX(75deg);
     transform-style: preserve-3d;
+    
 }
 
 @media (max-width: 767px) {
-    .orbital > .layers:has(> .zoom:focus) {
+    .orbital > .disks:has(> .zoom:focus) {
         width: 400vw;
         height: 400vw;
     }
 }
 
-.orbital > .layers > .layer {
+.orbital > .disks > .disk {
     --distance: calc((var(--distance-radius) / 100) * 80%);
     position: absolute;
     width: var(--distance);
@@ -31,20 +32,22 @@
     border-radius: 50%;
     box-sizing: border-box;
     transform-style: preserve-3d;
-    animation: rotate-layer 8000ms linear infinite;
+    animation: rotate-disk 8000ms linear infinite;
+    will-change: transform;
 }
 
-.orbital > .layers > .layer > .picture {
+.orbital > .disks > .disk > .picture {
     position: absolute;
     top: 50%;
     left: 0;
     animation: rotate-picture 8000ms linear infinite;
+    will-change: transform;
 }
-.orbital > .layers > .layer > .picture > img {
+.orbital > .disks > .disk > .picture > img {
     --diameter: calc((var(--size-diameter) / 250000) * 20vw);
     position: absolute;
-    top: calc(var(--diameter) / -2);
-    left: calc(var(--diameter) / -2);
+    top: calc((var(--diameter) / -2));
+    left: calc((var(--diameter) / -2));
     width: var(--diameter);
     height: var(--diameter);
     border-radius: 50%;
@@ -75,7 +78,7 @@
     }
 }*/
 
-@keyframes rotate-layer {
+@keyframes rotate-disk {
     from {
         transform: rotateZ(0deg);
     }
