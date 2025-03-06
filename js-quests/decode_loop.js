@@ -17,10 +17,8 @@ let code = "";
 for (let i = 0; i < hiddenCode.length; i++) {
     if (hiddenCode[i] !== "X") {
         const digit = parseInt(hiddenCode[i]);
-        if (!Number.isNaN(digit)) {
-            if (digit % 2 !== 0) {
-                code += hiddenCode[i];
-            }
+        if (!Number.isNaN(digit) && digit % 2) {
+            code += hiddenCode[i];
         } else {
             code += hiddenCode[i];
         }
