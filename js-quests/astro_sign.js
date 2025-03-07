@@ -1,5 +1,3 @@
-// Here are our Astro signs provided as a string.
-
 const aries = `♈`,
   taurus = `♉`,
   gemini = `♊`,
@@ -13,10 +11,18 @@ const aries = `♈`,
   aquarius = `♒`,
   pisces = `♓︎`;
 
-const fireSigns = [aries, leo, sagittarius];
-const earthSigns = [taurus, virgo, capricorn];
-const airSigns = [gemini, libra, aquarius];
-const waterSigns = [cancer, scorpio, pisces];
+const fireSigns = [aries, leo];
+const earthSigns = [taurus, virgo, capricorn, sagittarius];
+const airSigns = [pisces, gemini, libra, aquarius];
+const waterSigns = [scorpio, pisces];
+
+const sagittariusItem = earthSigns.pop();
+fireSigns.push(sagittariusItem);
+
+const piscesItem = airSigns.shift();
+waterSigns.push(piscesItem);
+
+waterSigns.unshift(cancer);
 
 console.log(
   fireSigns[fireSigns.length - 1] === "♐"
